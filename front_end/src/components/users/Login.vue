@@ -1,4 +1,5 @@
 <template>
+    <el-container class="content">
     <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <h3 class="title">凯悦云餐饮--系统登陆</h3>
     <el-form-item prop="account">
@@ -13,6 +14,7 @@
       <el-button type="primary" style="width:48%;" @click.native.prevent="login" :loading="logining">登 录</el-button>
     </el-form-item>
   </el-form>
+</el-container>
 </template>
 
 <script>
@@ -42,7 +44,9 @@
         let userInfo = {account:this.loginForm.account, password:this.loginForm.password}
         this.$api.login(JSON.stringify(userInfo)).then((res) => {
             Cookies.set('token', res.data.token) // 放置token到Cookie
-            sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
+            sessionStorage.setItem('UserId', userInfo.account) // 保存用户到本地会话
+            sessionStorage.setItem("logined", true)
+            sessionStorage.setItem("Loginedname", userInfo.account)
             this.$router.push('/')  // 登录成功，跳转到主页
           }).catch(function(res) {
             alert(res);
@@ -56,6 +60,11 @@
 </script>
 
 <style scoped lang="scss">
+    .content{
+        background-color: #2494F2;
+        width: 100%;
+        height: 100%;
+    }
     .login-container {
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -64,7 +73,7 @@
     margin: 180px auto;
     width: 350px;
     padding: 35px 35px 15px 35px;
-    background: #fff;
+    background: #ffffff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
     .title {
