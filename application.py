@@ -6,7 +6,8 @@
 from flask import Flask
 from flask_script import Manager
 from flask_cors import CORS
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 import os
 
 
@@ -17,11 +18,12 @@ class Application(Flask):
         self.config.from_pyfile("config/base_settings.py")
         if "ops_config" in os.environ:
             self.config.from_pyfile("config/%s_settings.py" % os.environ["ops_config"])
-        # db.init_app(self)
+        db.init_app(self)
+        CORS(self, supports_credentials=True)
 
 
-# db = SQLAlchemy()
+db = SQLAlchemy()
 app = Application(__name__, template_folder=os.getcwd()+"/front_end/dist", root_path=os.getcwd(),
                   static_folder=os.getcwd()+"/front_end/dist/static")
 manager = Manager(app)
-# migrate = Migrate(app, db)
+migrate = Migrate(app, db)
