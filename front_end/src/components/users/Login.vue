@@ -1,5 +1,5 @@
 <template>
-    <el-container class="content">
+    <el-container>
     <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <h3 class="title">凯悦云餐饮--系统登陆</h3>
     <el-form-item prop="account">
@@ -60,11 +60,6 @@
 </script>
 
 <style scoped lang="scss">
-    .content{
-        background-color: #2494F2;
-        width: 100%;
-        height: 100%;
-    }
     .login-container {
     -webkit-border-radius: 5px;
     border-radius: 5px;
