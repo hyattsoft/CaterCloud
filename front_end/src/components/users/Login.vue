@@ -56,7 +56,7 @@
         this.$refs.loginForm.resetFields();
       }
     }
-  }
+    }
 </script>
 
 <style scoped lang="scss">

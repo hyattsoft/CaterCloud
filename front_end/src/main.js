@@ -7,6 +7,7 @@ import store from './store/index'
 
 Vue.config.productionTip = false
 
+
 Vue.use(ElementUI)
 router.beforeEach((to, from, next) =>{
   let isLogin = store.getters.isLogin
