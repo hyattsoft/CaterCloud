@@ -1,3 +1,6 @@
 module.exports = {
-    assetsDir: "static"
+    assetsDir: "static",
+    devServer: {
+        port: 8050
+    }
 }

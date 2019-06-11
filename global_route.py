@@ -9,4 +9,4 @@ from controllers.api import blue_api
 
 
 app.register_blueprint(home_route, url_prefix="/")
-app.register_blueprint(blue_api, url_prefix="/api")
+app.register_blueprint(blue_api, url_prefix="/http")
